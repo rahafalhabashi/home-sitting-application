@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # gets '/cookie_click', to: 'sessions#click'
+  post "/login", to: "sessions#create"
 end

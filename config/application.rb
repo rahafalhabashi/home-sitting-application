@@ -15,6 +15,7 @@ module HomeSittingApplication
     config.middleware.use ActionDispatch::Session::CookieStore
 
     config.action_dispatch.cookies_same_site_protection = :strict
+    # allows us to only accept cookies that are running on the same domain as our
 
 
 
