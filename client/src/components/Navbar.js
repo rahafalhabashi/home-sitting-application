@@ -1,12 +1,17 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 function Navbar() {
 
     return (
-        <div>
-            <button>Login</button>
+        <nav>
+            <NavLink exact to="/"><button>Home</button></NavLink>
+            <NavLink exact to="/Login"><button>Login</button></NavLink>
             <button>Logout</button>
-        </div>
+        </nav>
     )
 }
 export default Navbar
+
+
+//switched <div> to <nav>, tried adding navlink for home

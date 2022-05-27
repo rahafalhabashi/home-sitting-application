@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import Navbar from "./Navbar";
@@ -26,12 +26,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar onLogout={handleLogout} />
+        <Navbar onClick={handleLogin} onLogout={handleLogout} />
         <div className="content">
-          <Routes>
-            <Route exact path="/" element={<Home />}> </Route>
-            <Route path="/Login" element={<Login onClick={handleLogin} />}> </Route>
-          </Routes>
+          <Switch>
+            <Route exact path="/" >
+              <Home />
+            </Route>
+            <Route path="/Login" >
+              <Login />
+            </Route>
+          </Switch>
         </div>
       </div>
     </Router>
@@ -40,3 +44,6 @@ function App() {
 
 
 export default App;
+
+
+//  {/* <Route path="/Login" element={<Login onClick={handleLogin} />}> </Route> */}   was on line 35
