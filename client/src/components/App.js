@@ -25,8 +25,9 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
         <Navbar onClick={handleLogin} onLogout={handleLogout} />
+        {/* <Navbar.Brand>className="justify-content-center"</Navbar.Brand> */}
+      <div className="App">
         <div className="content">
           <Switch>
             <Route exact path="/" >
@@ -46,4 +47,3 @@ function App() {
 export default App;
 
 
-//  {/* <Route path="/Login" element={<Login onClick={handleLogin} />}> </Route> */}   was on line 35
