@@ -3,15 +3,21 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import Navbar from "./Navbar";
+import CreateUser from "./CreateUser";
 
 function App() {
   const [user, setUser] = useState(null)
   const [houses, setHouses] = useState([])
 
+
+  
+
+
+
   useEffect(() => {
     fetch("/me").then(res => {
       if (res.ok) {
-        response.json().then(user => setUser(user))
+        res.json().then(user => setUser(user))
       }
     });
   }, [])
@@ -26,8 +32,8 @@ function App() {
 
   return (
     <Router>
-        <Navbar onClick={handleLogin} onLogout={handleLogout} />
-        {/* <Navbar.Brand></Navbar.Brand> */}
+      <Navbar onClick={handleLogin} onLogout={handleLogout} />
+      {/* <Navbar.Brand></Navbar.Brand> */}
       <div className="App">
         <div className="content">
           <Switch>
@@ -35,7 +41,10 @@ function App() {
               <Home />
             </Route>
             <Route path="/Login" >
-              <Login handleLogin= {handleLogin} />
+              <Login handleLogin={handleLogin} />
+            </Route>
+            <Route path="/create-account">
+              <CreateUser />
             </Route>
           </Switch>
         </div>

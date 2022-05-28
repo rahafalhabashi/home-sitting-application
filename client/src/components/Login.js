@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import CreateUser from './CreateUser';
 
-function Login() {
+
+function Login({ handleLogin }) {
     const [username, setUsername] = useState("")
 
     function handleSubmit(e) {
@@ -14,7 +17,7 @@ function Login() {
             body: JSON.stringify({ username }),
         })
             .then(r => r.json())
-            .then(user => console.log(user))
+            .then(user => setUsername(user))
     }
 
     return (
@@ -32,10 +35,16 @@ function Login() {
                     </div>
                     <div>
                         <button onClick={handleSubmit}>Sign In</button>
-                        <p> Don't have an account? </p>
-                        <button >Create One! </button>
                     </div>
                 </form>
+                <div>
+                    <p> Don't have an account? </p>
+                    <Link to="/create-account">
+                        <button>
+                            Create One!
+                        </button>
+                    </Link>
+                </div>
             </header>
         </div>
     );

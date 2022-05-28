@@ -6,7 +6,7 @@
       end
 
       def show
-        user = User.find(id: params[:id])
+        user = User.find(params[:id])
         render json: user
       end
 
@@ -20,7 +20,7 @@
       end
 
       def update
-        user = User.find(id: params[:id])
+        user = User.find(params[:id])
         if user.update!(user_params)
           render json: user
         else
@@ -29,7 +29,7 @@
       end
 
       def destroy
-        user = User.find(id: params[:id])
+        user = User.find(params[:id])
         if user.destroy
           head :no_content
         else
@@ -43,12 +43,4 @@
       def user_params
         params.permit(:name, :dob, :email)
       end
-
-      # def options
-      #   @options ||= {include: %i[reviews]}
-      # end
-      # this method will be added to index/update called as second argument for our serializer
-
-    end
-  end
 end

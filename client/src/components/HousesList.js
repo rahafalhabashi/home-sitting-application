@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
+import HousesListItem from "./HousesListItem"
 
-function HousesList(){
+function HousesList( {houses} ){ 
     const housesList = houses.map(house => {
         return (
-            <HouseListItem 
+            <HousesListItem 
             key = {house.id}
             house = {house}
             />
@@ -17,3 +18,5 @@ function HousesList(){
 
     )
 }
+
+export default HousesList

@@ -1,15 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function HousesListItem() {
+function HousesListItem( {housesList} ) {
 
-    const housesList = houses.map(house => {
-        return (
-            <HouseListItem 
-            key = {house.id}
-            house = {house}
-            />
-        )
-    })
+   
 
     return (
         <div>
