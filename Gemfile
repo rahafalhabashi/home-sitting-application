@@ -46,6 +46,6 @@ group :development do
   # gem "spring"
 end
 
-gem 'jsonapi-serializer'
+# gem 'jsonapi-serializer'
 
 gem "faker", "~> 2.21"

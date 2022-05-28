@@ -6,11 +6,12 @@ import Navbar from "./Navbar";
 
 function App() {
   const [user, setUser] = useState(null)
+  const [houses, setHouses] = useState([])
 
   useEffect(() => {
     fetch("/me").then(res => {
       if (res.ok) {
-        Response.json().then(user => setUser(user))
+        response.json().then(user => setUser(user))
       }
     });
   }, [])
@@ -26,7 +27,7 @@ function App() {
   return (
     <Router>
         <Navbar onClick={handleLogin} onLogout={handleLogout} />
-        {/* <Navbar.Brand>className="justify-content-center"</Navbar.Brand> */}
+        {/* <Navbar.Brand></Navbar.Brand> */}
       <div className="App">
         <div className="content">
           <Switch>
@@ -34,7 +35,7 @@ function App() {
               <Home />
             </Route>
             <Route path="/Login" >
-              <Login />
+              <Login handleLogin= {handleLogin} />
             </Route>
           </Switch>
         </div>
