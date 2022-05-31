@@ -4,6 +4,8 @@ import HousesContainer from "./HousesContainer";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import CreateUser from "./CreateUser";
+import '../App.css';
+
 
 function App() {
   const [user, setUser] = useState(null)
@@ -39,8 +41,6 @@ function App() {
       <Navbar onClick={handleLogin} onLogout={handleLogout} />
       {/* <p> Hello! </p>
       <p> Need a home to stay in for your vacation? Just sit a pet and stay in one for free!</p> */}
-      <div className="App">
-      <div className="content">
          <Switch>
           <Route exact path="/" >
             <HousesContainer houses={allHouses}/>
@@ -52,8 +52,6 @@ function App() {
             <CreateUser />
           </Route>
         </Switch>
-      </div>
-      </div>
     </Router>
   );
 }

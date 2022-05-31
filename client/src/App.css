@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,16 +17,98 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+  #container {
+  text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+  width:100%;
+  
 } 
 
-.center-navbar {
-  width:30%;
-  margin-left: 35%;
+.card__content {
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: all 0.3s;
+  border: 2px solid var(--color);
+  word-wrap: break-word;
+  
+
 }
+
+
+/* #container>div {
+  width: 100px;
+  height: 100px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  background:red;
+} */
+
+
+span {
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.image  {
+  
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+  background: #73AD21;
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+}
+
+
+
+.cards {
+
+   /* display: flex; */
+   flex-wrap: wrap;
+   width: 80%;
+   height: 100%;
+   object-fit: cover;
+   /* border: 20px solid #000; */
+   /* background-color: #999; */
+   /* margin: 40px; */
+   padding: 10px;
+   /* width: calc(33% - 2rem); */
+   margin-left: 40px;
+   margin-right: 40px;
+
+}
+
+@media all and (max-width: 400px) {
+  
+}
+
+/* @media (min-width: 768px) {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+ */

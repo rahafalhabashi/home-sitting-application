@@ -10,7 +10,7 @@ function HousesContainer({houses}) {
             <p> Need a home to stay in for your vacation? Just sit a pet and stay in one for free!</p>
         
             <ul className="cards" style={{ display: 'flex' }}>
-                {houses.map(house => <House key={house.id}house={house}/>)}
+                {houses.map(house => <House key={house.id} house={house}/>)}
             </ul>
         </div>
     );
@@ -20,3 +20,4 @@ export default HousesContainer;
 
 
 // ^^^^ formally known as House
+// style={{ display: 'flex' }} in classname
