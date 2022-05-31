@@ -6,14 +6,14 @@ function HousesList( {houses} ){
         return (
             <HousesListItem 
             key = {house.id}
-            house = {house}
+            house = {housesList}
             />
         )
     })
 
     return (
         <div>
-            <ul> {housesList} </ul>
+            {housesList}
         </div>
 
     )

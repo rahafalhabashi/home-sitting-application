@@ -1,12 +1,13 @@
 import React from 'react'
 
-function HousesListItem( {housesList} ) {
+function HousesListItem({ house }) {
 
-   
+
 
     return (
         <div>
-            <ul> {housesList} </ul>
+            <div>
+            </div>
         </div>
 
     )
