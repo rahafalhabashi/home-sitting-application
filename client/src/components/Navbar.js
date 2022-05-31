@@ -14,7 +14,7 @@ function Navbar( {onClick, onLogout}) {
         <nav className="justify-content-center">
             <NavLink exact to="/"><button>Home</button></NavLink>
             <NavLink exact to="/Login"><button>Login</button></NavLink>
-            <button onClick={handleLogout} >Logout</button>
+            {/* <button onClick={handleLogout} >Logout</button> */}
         </nav>
     )
 }

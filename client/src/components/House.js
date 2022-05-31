@@ -6,7 +6,7 @@ function House({ house }) {
   }
 
   return (
-    // <div className="cards__item">
+    <div className="cards__item">
       <div className="card">
         <img src={house.house_url} alt={house.name} className="image" />
         <div className="card__content">
@@ -18,7 +18,7 @@ function House({ house }) {
           </div>
         </div>
       </div>
-    // </div>
+     </div>
   );
 }
 

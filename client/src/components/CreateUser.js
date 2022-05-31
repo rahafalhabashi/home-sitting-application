@@ -99,7 +99,6 @@ function CreateUser() {
                         <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
                     </div>
                     <div>
-                        {/* <button onClick={}>Sign In</button> */}
                         <br></br>
                         <button onClick={handleNewUser}> Create Account! </button>
                     </div>
