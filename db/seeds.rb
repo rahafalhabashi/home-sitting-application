@@ -12,6 +12,10 @@ require "faker"
     name: Faker::Name.unique.name,
     dob: Faker::Date.birthday(min_age: 18, max_age: 110),
     email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 10, max_length: 20),
+    username: Faker::Internet.username(specifier: 5..10)
+
+
   }])
 end
 
@@ -25,3 +29,5 @@ House.create(name: "Container", address: "Terrasini, Sicilia, Italy", pet: "Dog"
 House.create(name: "Costa Azul Surf", address: "San Jose del Cabo, Baja California Sur, Mexico", pet: "Cat", house_url: "https://a0.muscache.com/im/pictures/miso/Hosting-42742665/original/0f2e2367-cffb-4a78-bffb-440ef1d6820a.jpeg?im_w=480")
 House.create(name: "Lakefront Shipping Container", address: "Inglis, Manitoba, Canada", pet: "Fish", house_url: "https://a0.muscache.com/im/pictures/2a1ef0d3-1427-4f9c-a2ff-82e822caf39d.jpg?im_w=480")
 House.create(name: "The Wave Lambertville", address: "Lambertville, New Jersey, United States", pet: "Ferret", house_url: "https://a0.muscache.com/im/pictures/miso/Hosting-46327689/original/60cdde02-16c8-4db6-9966-fb2a3c19a9c0.jpeg?im_w=960")
+
+
