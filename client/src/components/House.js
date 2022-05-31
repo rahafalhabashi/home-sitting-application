@@ -2,7 +2,7 @@ import React from "react";
 
 function House({ house }) {
   function handleBooking() {
-    fetch
+    
   }
 
   return (
