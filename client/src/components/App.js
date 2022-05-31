@@ -4,6 +4,8 @@ import HousesContainer from "./HousesContainer";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import CreateUser from "./CreateUser";
+import '../App.css';
+
 
 function App() {
   const [user, setUser] = useState(null)

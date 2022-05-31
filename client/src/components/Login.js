@@ -5,6 +5,7 @@ import CreateUser from './CreateUser';
 
 function Login({ handleLogin }) {
     const [username, setUsername] = useState("")
+    const [loggedIn, setLoggedIn] = useState(false)
 
     function handleSubmit(e) {
         e.preventDefault()

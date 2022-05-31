@@ -2,13 +2,13 @@ import React from "react";
 
 function House({ house }) {
   function handleBooking() {
-    fetch
+    // fetch
   }
 
   return (
-    <div className="cards__item">
+    // <div className="cards__item">
       <div className="card">
-        <img src={house.house_url} alt={house.name} className="card__image" />
+        <img src={house.house_url} alt={house.name} className="image" />
         <div className="card__content">
           <div className="card__title">{house.name}</div>
           <div className="card__detail">
@@ -18,7 +18,7 @@ function House({ house }) {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 
