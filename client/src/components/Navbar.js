@@ -21,4 +21,3 @@ function Navbar( {onClick, onLogout}) {
 export default Navbar
 
 
-//switched <div> to <nav>, tried adding navlink for home
