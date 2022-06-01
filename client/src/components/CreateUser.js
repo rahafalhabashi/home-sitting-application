@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
+// import HousesContainer from './HousesContainer';
 
 
-function CreateUser() {
+function CreateUser({ setUser, setIsAuthenticated }) {
     const [newName, setNewName] = useState("")
     const [newUsername, setNewUsername] = useState("")
     const [newEmail, setNewEmail] = useState("")
     const [newPassword, setNewPassword] = useState("")
+    const [birthdate, setBirthdate] = useState(0)
 
     const [submitted, setSubmitted] = useState(false)
     const [error, setError] = useState(false)
@@ -27,23 +30,51 @@ function CreateUser() {
         setSubmitted(false);
     };
 
+    const handleNewUsername = (e) => {
+        setNewUsername(e.target.value);
+        setSubmitted(false);
+    };
+
+    const handleNewBirthdate = (e) => {
+        setBirthdate(e.target.value);
+        setSubmitted(false);
+    };
+
     // Handling the password change
     const handleNewPassword = (e) => {
         setNewPassword(e.target.value);
         setSubmitted(false);
     };
 
-    const handleNewUsername = (e) => {
-        setNewUsername(e.target.value);
-        setSubmitted(false);
-    };
 
     // Handling the form submission
     const handleNewUser = (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        const user = {
+            name: newName,
+            email: newEmail,
+            username: newUsername,
+            password: newPassword
+        }
+
         if (newName === '' || newEmail === '' || newPassword === '') {
             setError(true);
         } else {
+            fetch('/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            })
+                .then(res => {
+                    if (res.ok) {
+                        res.json()
+                            .then(user => {
+                                setUser(user)
+                                setIsAuthenticated(true)
+                                console.log(user)
+                            })
+                    }
+                })
             setSubmitted(true);
             setError(false);
         }
@@ -76,35 +107,41 @@ function CreateUser() {
     }
 
     return (
-        <div>
-            <div>
-                {errorMessage()}
-                {successMessage()}
-            </div>
-            <Router>
-                <form>
-                    <div>
-                        <label>Name </label>
-                        <input type="text" name="name" value={newName} onChange={handleNewName} required />
-                        <br></br>
-                        <label>Email </label>
-                        <input type="text" name="username" value={newEmail} onChange={handleNewEmail} required />
-                        <br></br>
-                        <label>Username </label>
-                        <input type="text" name="username" value={newUsername} onChange={handleNewUsername} required />
-                        <br></br>
-                    </div>
-                    <div>
-                        <label>Create Password: </label>
-                        <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
-                    </div>
-                    <div>
-                        <br></br>
-                        <button onClick={handleNewUser}> Create Account! </button>
-                    </div>
-                </form>
+        <div className='App'>
+            <div className="App-header">
+                <h1> Create an Account</h1>
+                <Router>
+                    <form>
+                        <div>
+                            <h6>
+                                {errorMessage()}
+                                {successMessage()}
+                            </h6>
+                            <label>Name </label>
+                            <input type="text" name="name" value={newName} onChange={handleNewName} required />
+                            <br></br>
+                            <label>Email </label>
+                            <input type="text" name="username" value={newEmail} onChange={handleNewEmail} required />
+                            <br></br>
+                            <label>Username </label>
+                            <input type="text" name="username" value={newUsername} onChange={handleNewUsername} required />
+                            <br></br>
+                            <label>Birthdate </label>
+                            <input type="date" name="bday" value={birthdate} onChange={handleNewBirthdate} required />
+                            <br></br>
+                        </div>
+                        <div>
+                            <label>Create Password: </label>
+                            <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
+                        </div>
+                        <div>
+                            <br></br>
+                            <NavLink exact to="/BookingsPage"> <button onClick={handleNewUser}> Create Account! </button> </NavLink>
+                        </div>
+                    </form>
 
-            </Router>
+                </Router>
+            </div>
         </div>
     )
 }

@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     get "sign_up", to: "registrations#new"
 
+<<<<<<< HEAD
     get "/me", to: "users#show"  
     get "/BookingsPage", to: "house#show"
 
+=======
+    get "/authorized_user", to: "users#show"  
+>>>>>>> 8ad7d8a1dc4b03c8e1de62e8ac223cf0d226c5b3
 end
