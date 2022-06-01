@@ -18,6 +18,7 @@ function Navbar({ onLogout, loggedIn, onLogin }) {
                 <NavLink exact to="/"><button className='nav-button'>Home</button></NavLink>
                 <NavLink exact to="/Login"><button className='nav-button'> {loggedIn ? "Logout" && onLogout : "Login"} </button></NavLink>
                 <button className='nav-button' onClick={handleLogout} >Logout</button>
+                <NavLink exact to="/BookingsPage"><button className='nav-button'>My Bookings</button></NavLink>
             </div>
         </nav>
     )

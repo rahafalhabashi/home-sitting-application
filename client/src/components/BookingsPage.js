@@ -46,20 +46,6 @@ export default BookingsPage;
 
 
 
-// <div className="cards__item">
-// <div className="card">
-//   <img src={house.house_url} alt={house.name} className="image" />
-//   <div className="card__content">
-//     <div className="card__title">{house.name}</div>
-//     <div className="card__detail">
-//       <p>{house.address}</p>
-//       <p>Pet: {house.pet}</p>
-//     </div>
-//   </div>
-// </div>
-// </div>
-
-
 
 // const renderSaved = savedStories.map(story => {
 //   return (
