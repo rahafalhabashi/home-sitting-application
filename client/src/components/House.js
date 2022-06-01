@@ -1,7 +1,9 @@
 import React from "react";
+import {NavLink} from 'react-router-dom'
 
 function House({ house }) {
   function handleBooking() {
+
     // fetch
   }
 
@@ -12,14 +14,22 @@ function House({ house }) {
         <div className="card__content">
           <div className="card__title">{house.name}</div>
           <div className="card__detail">
-            <p>{house.address}</p>
-            <p>Pet: {house.pet}</p>
-            <button onClick={handleBooking}>Book Now!</button>
+          <p class="category">{house.address}</p>
+            <p class="category">Pet: {house.pet}</p>
+            <NavLink exact to="/BookingsPage"><button onClick={handleBooking}>Book Now!</button></NavLink>
+            <NavLink exact to='/houses/{house.id}'><button onClick={handleBooking}>Broken!</button></NavLink> 
+            {/* <button onClick={handleBooking}>Book Now!</button> */}
           </div>
         </div>
       </div>
-     </div>
+    </div>
   );
 }
 
 export default House;
+
+
+//{/* <NavLink exact to="/BookingsPage"><button onClick={handleBooking}>Book Now!</button></NavLink> */}
+// testing line 19 to handle use by id 
+
+// cannot figure out 

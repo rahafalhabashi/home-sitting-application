@@ -4,6 +4,7 @@ import HousesContainer from "./HousesContainer";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import CreateUser from "./CreateUser";
+import BookingsPage from "./BookingsPage";
 import '../App.css';
 
 
@@ -39,8 +40,6 @@ function App() {
   return (
     <Router>
       <Navbar onClick={handleLogin} onLogout={handleLogout} />
-      {/* <p> Hello! </p>
-      <p> Need a home to stay in for your vacation? Just sit a pet and stay in one for free!</p> */}
          <Switch>
           <Route exact path="/" >
             <HousesContainer houses={allHouses}/>
@@ -50,6 +49,9 @@ function App() {
           </Route>
           <Route path="/create-account">
             <CreateUser />
+          </Route>
+          <Route path="/BookingsPage">
+            <BookingsPage houses={allHouses}/>
           </Route>
         </Switch>
     </Router>

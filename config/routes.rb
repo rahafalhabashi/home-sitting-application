@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     get "sign_up", to: "registrations#new"
 
     get "/me", to: "users#show"  
+    get "/BookingsPage", to: "house#show"
 
 end
