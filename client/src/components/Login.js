@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import CreateUser from './CreateUser';
+// import CreateUser from './CreateUser';
 
-
-function Login({ handleLogin }) {
+function Login({ handleLogin, setUser, setIsAuthenticated }) {
     const [username, setUsername] = useState("")
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [password, setPassword] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -15,7 +14,7 @@ function Login({ handleLogin }) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username }),
+            body: JSON.stringify({ username, password }),
         })
             .then(r => r.json())
             .then(user => setUsername(user))
@@ -25,23 +24,23 @@ function Login({ handleLogin }) {
         <div className="App">
             <header className="App-header">
                 <h1>Welcome</h1>
-                <form>
+                <form onClick={handleSubmit}>
                     <div>
                         <label>Username </label>
-                        <input type="text" name="username" required />
+                        <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
                     </div>
                     <div>
                         <label>Password </label>
-                        <input type="password" name="password" required />
+                        <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required />
                     </div>
                     <div>
-                        <button onClick={handleSubmit}>Sign In</button>
+                        <button>Sign In</button>
                     </div>
                 </form>
                 <div>
                     <p> Don't have an account? </p>
                     <Link to="/create-account">
-                        <button>
+                        <button type='button'>
                             Create One!
                         </button>
                     </Link>

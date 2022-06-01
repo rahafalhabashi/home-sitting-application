@@ -9,24 +9,29 @@ import '../App.css';
 
 function App() {
   const [user, setUser] = useState(null)
-  const [allHouses, setAllHouses] = useState([])
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [houses, setHouses] = useState([])
 
 
-      useEffect(() => {
-        fetch('/houses')
-          .then(resp => resp.json())
-          .then(data => setAllHouses(data))
-    }, [])
+  useEffect(() => {
+    fetch("/authorized_user")
+      .then(res => {
+        if (res.ok) {
+          res.json()
+            .then(user => {
+              setIsAuthenticated(true)
+              setUser(user)
+            });
+        }
+      });
 
+    fetch('/houses')
+      .then(resp => resp.json())
+      .then(houses => setHouses(houses))
+  }, [])
 
-
-  // useEffect(() => {
-  //   fetch("/me").then(res => {
-  //     if (res.ok) {
-  //       res.json().then(user => setUser(user))
-  //     }
-  //   });
-  // }, [])
 
   function handleLogin() {
     setUser(user)
@@ -34,24 +39,29 @@ function App() {
 
   function handleLogout() {
     setUser(null)
+    setLoggedIn(false)
+  }
+
+  if (!isAuthenticated) {
+     <Login error={'Please login!'} handleLogin={handleLogin} setUser={setUser} setIsAuthenticated={setIsAuthenticated}  />
   }
 
   return (
     <Router>
-      <Navbar onClick={handleLogin} onLogout={handleLogout} />
+      <Navbar onLogout={handleLogout} onLogin={handleLogin} loggedIn={loggedIn} />
       {/* <p> Hello! </p>
       <p> Need a home to stay in for your vacation? Just sit a pet and stay in one for free!</p> */}
-         <Switch>
-          <Route exact path="/" >
-            <HousesContainer houses={allHouses}/>
-          </Route>
-          <Route path="/Login" >
-            <Login handleLogin={handleLogin} />
-          </Route>
-          <Route path="/create-account">
-            <CreateUser />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route exact path="/" >
+          <HousesContainer houses={houses} />
+        </Route>
+        <Route path="/Login" >
+          <Login />
+        </Route>
+        <Route path="/create-account">
+          <CreateUser  setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+        </Route>
+      </Switch>
     </Router>
   );
 }

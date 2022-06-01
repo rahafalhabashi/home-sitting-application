@@ -1,26 +1,25 @@
-import React, { useState} from 'react'
-import {NavLink} from 'react-router-dom'
-import BookingsPage from "./BookingsPage";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+// import BookingsPage from "./BookingsPage";
 
 
-function Navbar( {onClick, onLogout}) {
-    const [loggedIn, setLoggedIn] = useState(false)
+function Navbar({ onLogout, loggedIn, onLogin }) {
 
     function handleLogout() {
         fetch('/logout', {
-            method: "DELETE",      
+            method: "DELETE",
         })
-        .then(()=> onLogout())
+            .then(() => onLogout())
     }
 
     return (
-        <nav className="justify-content-center">
-            <NavLink exact to="/"><button>Home</button></NavLink>
-            <NavLink exact to="/Login"><button> {loggedIn(true) ? "Login" : "Logout"} </button></NavLink>
-            <button onClick={handleLogout} >Logout</button>
+        <nav className="nav-bar">
+            <div>
+                <NavLink exact to="/"><button className='nav-button'>Home</button></NavLink>
+                <NavLink exact to="/Login"><button className='nav-button'> {loggedIn ? "Logout" && onLogout : "Login"} </button></NavLink>
+                <button className='nav-button' onClick={handleLogout} >Logout</button>
+            </div>
         </nav>
     )
 }
 export default Navbar
-
-

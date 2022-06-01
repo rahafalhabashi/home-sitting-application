@@ -10,6 +10,5 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     get "sign_up", to: "registrations#new"
 
-    get "/me", to: "users#show"  
-
+    get "/authorized_user", to: "users#show"  
 end

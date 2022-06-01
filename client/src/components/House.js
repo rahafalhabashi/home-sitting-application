@@ -8,14 +8,14 @@ function House({ house }) {
 
   return (
     <div className="cards__item">
-      <div className="card">
+      <div className="cards">
         <img src={house.house_url} alt={house.name} className="image" />
         <div className="card__content">
-          <div className="card__title">{house.name}</div>
+          <div className="card-title">{house.name}</div>
           <div className="card__detail">
-            <p>{house.address}</p>
-            <p>Pet: {house.pet}</p>
-            <button onClick={handleBooking}>Book Now!</button>
+            <p className="house-address">{house.address}</p>
+            <p className="house-pet">Pet: {house.pet}</p>
+            <button className="book-button" onClick={handleBooking}>Book Now!</button>
           </div>
         </div>
       </div>
