@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2022-06-01
+  end_date: 2022-06-01
+  users_id: one
+  houses_id: one
+
+two:
+  start_date: 2022-06-01
+  end_date: 2022-06-01
+  users_id: two
+  houses_id: two

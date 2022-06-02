@@ -4,6 +4,7 @@ import HousesContainer from "./HousesContainer";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import CreateUser from "./CreateUser";
+import { NavLink } from "react-router-dom";
 import BookingsPage from "./BookingsPage";
 import '../App.css';
 
@@ -15,7 +16,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [houses, setHouses] = useState([])
 
-
+  //Keeps user logged in
   useEffect(() => {
     fetch("/authorized_user")
       .then(res => {
@@ -33,6 +34,13 @@ function App() {
       .then(houses => setHouses(houses))
   }, [])
 
+  if (user) {
+    return <h2>Welcome, {user.username}! </h2>
+  }
+  // (!isAuthenticated) 
+  else {
+    <Login error={'Please login!'} onLogin={setUser} setIsAuthenticated={setIsAuthenticated} />
+  }
 
   function handleLogin() {
     setUser(user)
@@ -43,9 +51,6 @@ function App() {
     setLoggedIn(false)
   }
 
-  if (!isAuthenticated) {
-     <Login error={'Please login!'} handleLogin={handleLogin} setUser={setUser} setIsAuthenticated={setIsAuthenticated}  />
-  }
 
   return (
     <Router>
@@ -60,7 +65,10 @@ function App() {
           <Login />
         </Route>
         <Route path="/create-account">
-          <CreateUser  setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+          <CreateUser setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+        </Route>
+        <Route path="/BookingsPage">
+          <BookingsPage houses={houses} />
         </Route>
       </Switch>
     </Router>

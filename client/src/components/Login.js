@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom";
 // import CreateUser from './CreateUser';
 
-function Login({ handleLogin, setUser, setIsAuthenticated }) {
+function Login({ onLogin }) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -14,17 +14,17 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ username }),
         })
             .then(r => r.json())
-            .then(user => setUsername(user))
+            .then(user => onLogin(user))
     }
 
     return (
         <div className="App">
             <header className="App-header">
                 <h1>Welcome</h1>
-                <form onClick={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label>Username </label>
                         <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
@@ -34,7 +34,7 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
                         <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required />
                     </div>
                     <div>
-                        <button>Sign In</button>
+                        <button type='submit'>Sign In</button>
                     </div>
                 </form>
                 <div>
@@ -47,8 +47,6 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
                 </div>
             </header>
         </div>
-      </header>
-    </div>
-  );
+    );
 }
 export default Login;

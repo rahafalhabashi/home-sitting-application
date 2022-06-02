@@ -31,3 +31,14 @@ House.create(name: "Lakefront Shipping Container", address: "Inglis, Manitoba, C
 House.create(name: "The Wave Lambertville", address: "Lambertville, New Jersey, United States", pet: "Ferret", house_url: "https://a0.muscache.com/im/pictures/miso/Hosting-46327689/original/60cdde02-16c8-4db6-9966-fb2a3c19a9c0.jpeg?im_w=960")
 
 
+
+  Appoinment.create(start_date:  , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 

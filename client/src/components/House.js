@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 function House({ house }) {
   function handleBooking() {
 
@@ -12,7 +14,8 @@ function House({ house }) {
           <div className="card__detail">
             <p className="house-address">{house.address}</p>
             <p className="house-pet">Pet: {house.pet}</p>
-            <button className="book-button" onClick={handleBooking}>Book Now!</button>
+            <NavLink exact to="/BookingsPage"><button onClick={handleBooking}>My Bookings</button></NavLink>
+            <NavLink exact to={`/houses/${house.id}`}><button >Book Now!</button></NavLink>
           </div>
         </div>
       </div>
@@ -22,7 +25,7 @@ function House({ house }) {
 export default House;
 
 
-//{/* <NavLink exact to="/BookingsPage"><button onClick={handleBooking}>Book Now!</button></NavLink> */}
+//{/*  */}
 // testing line 19 to handle use by id 
 
 // cannot figure out 

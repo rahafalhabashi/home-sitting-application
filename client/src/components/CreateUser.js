@@ -9,7 +9,7 @@ function CreateUser({ setUser, setIsAuthenticated }) {
     const [newUsername, setNewUsername] = useState("")
     const [newEmail, setNewEmail] = useState("")
     const [newPassword, setNewPassword] = useState("")
-    const [birthdate, setBirthdate] = useState(0)
+    const [birthdate, setBirthdate] = useState("")
 
     const [submitted, setSubmitted] = useState(false)
     const [error, setError] = useState(false)
@@ -54,10 +54,11 @@ function CreateUser({ setUser, setIsAuthenticated }) {
             name: newName,
             email: newEmail,
             username: newUsername,
+            dob: birthdate,
             password: newPassword
         }
 
-        if (newName === '' || newEmail === '' || newPassword === '') {
+        if (newName === '' || newEmail === '' || newPassword === '' ||  birthdate === undefined) {
             setError(true);
         } else {
             fetch('/users', {

@@ -6,7 +6,7 @@
       end
 
       def show
-        current_user = User.find_by(id: sessions[:cucurrent_user])
+        current_user = User.find_by(id: sessions[:current_user])
         render json: current_user
       end
 

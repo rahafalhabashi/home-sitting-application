@@ -16,8 +16,11 @@ function Navbar({ onLogout, loggedIn, onLogin }) {
         <nav className="nav-bar">
             <div>
                 <NavLink exact to="/"><button className='nav-button'>Home</button></NavLink>
-                <NavLink exact to="/Login"><button className='nav-button'> {loggedIn ? "Logout" && onLogout : "Login"} </button></NavLink>
+                {/* check if ternary operator below works with && */}
+                <NavLink exact to="/Login"><button className='nav-button'> {loggedIn ? "Logout" && onLogout : "Login" && onLogin} </button></NavLink>
                 <button className='nav-button' onClick={handleLogout} >Logout</button>
+                <NavLink exact to="/BookingsPage"><button className='nav-button'>My Bookings</button></NavLink>
+
             </div>
         </nav>
     )
