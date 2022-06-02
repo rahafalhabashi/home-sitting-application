@@ -24,7 +24,7 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
         <div className="App">
             <header className="App-header">
                 <h1>Welcome</h1>
-                <form onClick={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label>Username </label>
                         <input
@@ -48,13 +48,13 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
                         <button>Sign In</button>
                     </div>
                 </form>
-            </header>
             <div>
                 <p> Don't have an account? </p>
                 <Link to="/create-account">
                     <button type="button">Create One!</button>
                 </Link>
             </div>
+            </header>
         </div>
     );
 }

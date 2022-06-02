@@ -25,7 +25,7 @@ function App() {
           setUser(user);
         });
       }
-    });
+    }, [])
 
   if (user) {
     return <h2>Welcome, {user.username}! </h2>
@@ -63,6 +63,8 @@ function App() {
         onLogout={handleLogout}
         onLogin={handleLogin}
         loggedIn={loggedIn}
+        user={user}
+        setUser={setUser}
       />
       <Switch>
         <Route exact path="/">

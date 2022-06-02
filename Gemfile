@@ -49,3 +49,5 @@ end
 # gem 'jsonapi-serializer'
 
 gem "faker", "~> 2.21"
+
+gem "bcrypt", "~> 3.1"

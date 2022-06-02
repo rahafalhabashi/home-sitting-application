@@ -8,6 +8,7 @@ function CreateUser() {
     const [newEmail, setNewEmail] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [birthdate, setBirthdate] = useState("")
+    const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
     const [submitted, setSubmitted] = useState(false)
     const [error, setError] = useState(false)
@@ -28,9 +29,20 @@ function CreateUser() {
         setSubmitted(false);
     };
 
+    // Handling the email change
+    const handleNewBirthdate = (e) => {
+        setBirthdate(e.target.value);
+        setSubmitted(false);
+    };
+
     // Handling the password change
     const handleNewPassword = (e) => {
         setNewPassword(e.target.value);
+        setSubmitted(false);
+    };
+
+    const handlePassConfirmation = (e) => {
+        setPasswordConfirmation(e.target.value);
         setSubmitted(false);
     };
 
@@ -39,20 +51,31 @@ function CreateUser() {
         setSubmitted(false);
     };
 
-    // Handling the form submission
+    // Handling the form submission, creating a new user and persising to db
     const handleNewUser = (e) => {
-
         e.preventDefault()
-        const user = {
-            name: newName,
-            email: newEmail,
-            username: newUsername,
-            dob: birthdate,
-            password: newPassword
-        }
+        fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: newName,
+                dob: birthdate,
+                email: newEmail,
+                password: newPassword,
+                password_confirmation: passwordConfirmation,
+                username: newUsername
+            })
+        })
+        .then(res => 
+           { if(res.ok) {
+               res.json()
+               .then(user => setNewUsername(user))
+            }})
 
-        if (newName === '' || newEmail === '' || newPassword === '' ||  birthdate === undefined) {
-        e.preventDefault();
+        if (newName === '' || newEmail === '' || newPassword === '' || birthdate === undefined) {
+            e.preventDefault();
             setError(true);
         } else {
             setSubmitted(true);
@@ -87,35 +110,44 @@ function CreateUser() {
     }
 
     return (
-        <div>
+        <div className="App">
+            <div className="App-header">
             <div>
                 {errorMessage()}
                 {successMessage()}
             </div>
             <Router>
-                <form>
-                    <div>
-                        <label>Name </label>
-                        <input type="text" name="name" value={newName} onChange={handleNewName} required />
-                        <br></br>
-                        <label>Email </label>
-                        <input type="text" name="username" value={newEmail} onChange={handleNewEmail} required />
-                        <br></br>
-                        <label>Username </label>
-                        <input type="text" name="username" value={newUsername} onChange={handleNewUsername} required />
-                        <br></br>
-                    </div>
-                    <div>
-                        <label>Create Password: </label>
-                        <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
-                    </div>
-                    <div>
-                        <br></br>
-                        <button onClick={handleNewUser}> Create Account! </button>
-                    </div>
-                </form>
+                <div>
+                    <form>
+                        <div >
+                            <label>Name </label>
+                            <input type="text" name="name" value={newName} onChange={handleNewName} required />
+                            <br></br>
+                            <label>Email </label>
+                            <input type="text" name="email" value={newEmail} onChange={handleNewEmail} required />
+                            <br></br>
+                            <label>Username </label>
+                            <input type="text" name="username" value={newUsername} onChange={handleNewUsername} required />
+                            <br></br>
+                            <label>Birthday </label>
+                            <input type="date" name="birthday" value={birthdate} onChange={handleNewBirthdate} required />
+                            <br></br>
+                        </div>
+                        <div>
+                            <label>Create Password: </label>
+                            <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
+                            <br></br>
+                            <label>Confirm Password: </label>
+                            <input type="password" name="password" value={passwordConfirmation} onChange={handlePassConfirmation} required />
+                        </div>
+                        <div>
+                            <button className='nav-button' onClick={handleNewUser}> Create New Account! </button>
+                        </div>
+                    </form>
+                </div>
 
             </Router>
+            </div>
         </div>
     )
 }
