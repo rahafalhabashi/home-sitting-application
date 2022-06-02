@@ -2,50 +2,59 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Link } from "react-router-dom";
 // import CreateUser from './CreateUser';
 
-function Login({ onLogin }) {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+function Login({ handleLogin, setUser, setIsAuthenticated }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     function handleSubmit(e) {
-        e.preventDefault()
-        console.log("hey")
-        fetch('/login', {
+        e.preventDefault();
+        console.log("hey");
+        fetch("/login", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username }),
+            body: JSON.stringify({ username, password }),
         })
-            .then(r => r.json())
-            .then(user => onLogin(user))
+            .then((r) => r.json())
+            .then((user) => setUsername(user));
     }
 
     return (
         <div className="App">
             <header className="App-header">
                 <h1>Welcome</h1>
-                <form onSubmit={handleSubmit}>
+                <form onClick={handleSubmit}>
                     <div>
                         <label>Username </label>
-                        <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
+                        <input
+                            type="text"
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
                     <div>
                         <label>Password </label>
-                        <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                        <input
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
                     </div>
                     <div>
-                        <button type='submit'>Sign In</button>
+                        <button>Sign In</button>
                     </div>
                 </form>
-                <div>
-                    <p> Don't have an account? </p>
-                    <Link to="/create-account">
-                        <button type='button'>
-                            Create One!
-                        </button>
-                    </Link>
-                </div>
             </header>
+            <div>
+                <p> Don't have an account? </p>
+                <Link to="/create-account">
+                    <button type="button">Create One!</button>
+                </Link>
+            </div>
         </div>
     );
 }

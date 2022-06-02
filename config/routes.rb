@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   resources :houses, only: [:index, :show, :update]
 
   # root "articles#index"
-    get "/users", to: 'users#index'
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
-    # get "sign_up", to: "registrations#new"
+  get "/users", to: "users#index"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  # get "sign_up", to: "registrations#new"
 
-    get "/authorized_user", to: "users#show"  
-    # get "/BookingsPage", to: ""
+  get "/authorized_user", to: "users#show"
 end

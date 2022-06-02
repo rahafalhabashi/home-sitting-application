@@ -43,7 +43,3 @@ const renderSaved = savedHouses.map(house => {
 }
 
 export default BookingsPage;
-
-
-
-
