@@ -72,6 +72,7 @@ function CreateUser() {
            { if(res.ok) {
                res.json()
                .then(user => setNewUsername(user))
+               return res.json().then(body => setNewUsername(body))
             }})
 
         if (newName === '' || newEmail === '' || newPassword === '' || birthdate === undefined) {

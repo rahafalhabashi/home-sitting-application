@@ -18,10 +18,10 @@ function BookingsPage() {
         }
     })
     .then(resp => resp.json())
-    .then(setSavedHouses(savedHouses.filter(savedHouse => {
-        return savedHouse.id !== house.id
-    })))
-}
+  }
+  // setSavedHouses(savedHouses.filter(savedHouse => {
+  //     return savedHouse.id !== house.id
+  // }))
 
 const renderSaved = savedHouses.map(house => {
   return (

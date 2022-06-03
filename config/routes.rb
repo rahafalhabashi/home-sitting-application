@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
-  
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   # get "sign_up", to: "registrations#new"
 
   get "/authorized_user", to: "users#show"
+  # delete {`/houses/${house.id}`}, "houses#destroy"
 end

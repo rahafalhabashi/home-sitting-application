@@ -7,6 +7,7 @@ import CreateUser from "./CreateUser";
 // import { NavLink } from "react-router-dom";
 import BookingsPage from "./BookingsPage";
 import '../App.css';
+import { Redirect } from "react-router-dom";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [houses, setHouses] = useState([]);
-  
+
   //Keeps user logged in
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -25,19 +26,34 @@ function App() {
           setUser(user);
         });
       }
-    }, [])
+    })
 
-  if (user) {
-    return <h2>Welcome, {user.username}! </h2>
-  }
-  // (!isAuthenticated) 
-  else {
-    <Login error={'Please login!'} onLogin={setUser} setIsAuthenticated={setIsAuthenticated} />
-  }
-    fetch("/houses")
-      .then((resp) => resp.json())
-      .then((houses) => setHouses(houses));
-  }, []);
+    fetch("/houses").then((res) => {
+      if (res.ok) {
+        res.json().then((houses) => {
+          setHouses(houses);
+
+        });
+      }
+    });
+  }, [])
+
+
+  // if (user) {
+  //   return <h2>Welcome, {user.username}! </h2>
+  // }
+  // // (!isAuthenticated) 
+  // else {
+  //   <Login error={'Please login!'} onLogin={setUser} setIsAuthenticated={setIsAuthenticated} />
+  // }
+
+
+  // fetch("/houses") 
+  //     .then((resp) => {
+  //       if (resp.ok) {
+  //         resp.json().then((houses) => {
+  //           setHouses(houses);
+  // }, []);
 
   function handleLogin() {
     setUser(user);
@@ -46,15 +62,6 @@ function App() {
   function handleLogout() {
     setUser(null);
     setLoggedIn(false);
-  }
-
-  if (!isAuthenticated) {
-    <Login
-      error={"Please login!"}
-      handleLogin={handleLogin}
-      setUser={setUser}
-      setIsAuthenticated={setIsAuthenticated}
-    />;
   }
 
   return (
@@ -71,7 +78,12 @@ function App() {
           <HousesContainer houses={houses} />
         </Route>
         <Route path="/Login">
-          <Login />
+          <Login
+            handleLogin={handleLogin}
+            setUser={setUser}
+            setIsAuthenticated={setIsAuthenticated} />
+                      { user ? <Redirect to={''} /> : <Redirect to={'/login'} />}
+
         </Route>
         <Route path="/create-account">
           <CreateUser
@@ -80,7 +92,10 @@ function App() {
           />
         </Route>
         <Route path="/BookingsPage">
-          <BookingsPage houses={houses} />
+          {
+            user ? <BookingsPage houses={houses} /> : <Redirect to={'/login'} />
+
+          }
         </Route>
       </Switch>
     </Router>
@@ -88,5 +103,3 @@ function App() {
 }
 
 export default App;
-
-

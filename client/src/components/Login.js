@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 function Login({ handleLogin, setUser, setIsAuthenticated }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    function refreshPage() {
+        window.location.reload(false);
+      }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -16,8 +21,20 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
             },
             body: JSON.stringify({ username, password }),
         })
-            .then((r) => r.json())
-            .then((user) => setUsername(user));
+        .then(res => {
+            if(res.ok){
+              res.json()
+              .then(user=>{
+                setUser(user)
+                setIsAuthenticated(true) 
+                refreshPage()               
+              })
+              
+            } else {
+              res.json()
+              .then(json => setError(json.error))
+            }
+          })
     }
 
     return (
@@ -45,16 +62,18 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
                         />
                     </div>
                     <div>
-                        <button>Sign In</button>
+                        <button className='nav-button'>Sign In</button>
                     </div>
                 </form>
             <div>
                 <p> Don't have an account? </p>
                 <Link to="/create-account">
-                    <button type="button">Create One!</button>
+                    <button className='nav-button' type="button">Create One!</button>
                 </Link>
             </div>
             </header>
+            {error?<div>{error}</div>:null}
+
         </div>
     );
 }
