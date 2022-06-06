@@ -59,12 +59,12 @@ function CreateUser() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
+            body: JSON. stringify({
                 name: newName,
                 dob: birthdate,
                 email: newEmail,
                 password: newPassword,
-                password_confirmation: passwordConfirmation,
+                password_digest: passwordConfirmation,
                 username: newUsername
             })
         })
@@ -82,6 +82,13 @@ function CreateUser() {
             setSubmitted(true);
             setError(false);
         }
+        
+            setNewName('')
+            setNewEmail('')
+            setNewUsername('')
+            setBirthdate('')
+            setPasswordConfirmation('')
+
     };
 
     // Showing success message

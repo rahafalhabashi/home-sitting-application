@@ -17,6 +17,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [houses, setHouses] = useState([]);
 
+
   //Keeps user logged in
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -28,17 +29,17 @@ function App() {
       }
     })
 
-    fetch("/houses").then((res) => {
-      if (res.ok) {
-        res.json().then((houses) => {
-          setHouses(houses);
-
-        });
-      }
-    });
   }, [])
-
-
+  
+  useEffect(() => {
+    fetch("/houses").then((res) => {
+    if (res.ok) {
+      res.json().then((houses) => {
+        setHouses(houses);
+      });
+    }}) 
+  }, [user]);
+  
   // if (user) {
   //   return <h2>Welcome, {user.username}! </h2>
   // }
@@ -62,6 +63,9 @@ function App() {
   function handleLogout() {
     setUser(null);
     setLoggedIn(false);
+    setHouses([])
+    // history.push('/')
+
   }
 
   return (
@@ -81,8 +85,9 @@ function App() {
           <Login
             handleLogin={handleLogin}
             setUser={setUser}
-            setIsAuthenticated={setIsAuthenticated} />
-                      { user ? <Redirect to={''} /> : <Redirect to={'/login'} />}
+            setIsAuthenticated={setIsAuthenticated}
+            isAuthenticated={isAuthenticated} />
+        {/* {user ? <Redirect to={''} /> : <Redirect to={'/login'} />} */}
 
         </Route>
         <Route path="/create-account">

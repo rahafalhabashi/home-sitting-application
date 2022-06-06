@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom"
+// import {NavLink} from "react-router-dom"
 // import CreateUser from './CreateUser';
 
-function Login({ handleLogin, setUser, setIsAuthenticated }) {
+function Login({ isAuthenticated, setUser, setIsAuthenticated }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    function refreshPage() {
-        window.location.reload(false);
-      }
+    
+    const history = useHistory()
+    console.log(history)
+
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -27,7 +30,7 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
               .then(user=>{
                 setUser(user)
                 setIsAuthenticated(true) 
-                refreshPage()               
+                history.push("/")
               })
               
             } else {
@@ -35,6 +38,8 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
               .then(json => setError(json.error))
             }
           })
+        //   history.push('/')
+
     }
 
     return (
@@ -62,7 +67,7 @@ function Login({ handleLogin, setUser, setIsAuthenticated }) {
                         />
                     </div>
                     <div>
-                        <button className='nav-button'>Sign In</button>
+                        <input type="submit" />
                     </div>
                 </form>
             <div>

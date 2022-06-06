@@ -25,13 +25,13 @@ House.create(name: "The Wave Lambertville", address: "Lambertville, New Jersey, 
 
 
 
-  Appoinment.create(start_date:  , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
-  Appoinment.create(start_date: , end_date: , user_id: , house_id: ) 
+  Booking.create(start_date: 07/23/22, end_date: 07/29/22, user_id: 65, house_id: 1) 
+  Booking.create(start_date: 08/23/22, end_date: 08/29/22, user_id: 66, house_id: 2) 
+  Booking.create(start_date: 09/23/22, end_date: 09/29/22, user_id: 64, house_id: 2) 
+  Booking.create(start_date: 10/23/22, end_date: 10/29/22, user_id: 63, house_id: 3) 
+  Booking.create(start_date: 11/23/22, end_date: 11/29/22, user_id: 62, house_id: 3) 
+  Booking.create(start_date: 12/23/22, end_date: 12/29/22, user_id: 66, house_id: 4) 
+  Booking.create(start_date: 12/01/22, end_date: 12/10/22, user_id: 60, house_id: 8) 
+  Booking.create(start_date: 12/11/22, end_date: 12/20/22, user_id: 66, house_id: 5) 
+  Booking.create(start_date: 07/23/22, end_date: 08/29/22, user_id: 66, house_id: 7) 
+  Booking.create(start_date: 08/23/22, end_date: 09/23/22, user_id: 66, house_id: 6) 
