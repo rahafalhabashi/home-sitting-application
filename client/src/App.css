@@ -5,8 +5,11 @@
 .nav-bar {
   padding: 10px;
   background: rgb(3, 3, 66);
+  /* background-image: linear-gradient(to right, rgb(3, 3, 66), #362e6b , #4a34c9, #5e48da, #8371eb, #778899); */
+
   font-family: Arial, sans serif;
 }
+
 
 .nav-button, .book-button {
   display: inline-block;

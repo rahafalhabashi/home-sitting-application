@@ -4,10 +4,13 @@ import HousesContainer from "./HousesContainer";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import CreateUser from "./CreateUser";
-// import { NavLink } from "react-router-dom";
+// import HousesList from "./HousesList";
 import BookingsPage from "./BookingsPage";
 import '../App.css';
 import { Redirect } from "react-router-dom";
+// import HousePageX from "./HousePageX";
+
+
 
 
 function App() {
@@ -74,7 +77,10 @@ function App() {
         setUser={setUser}
       />
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
+          <HousePageX houses={houses} />
+        </Route> */}
+         <Route exact path="/">
           <HousesContainer houses={houses} />
         </Route>
         <Route path="/Login">
@@ -97,9 +103,21 @@ function App() {
 
           }
         </Route>
+        {/* <Route >
+
+           <HousesListItem houses={houses} /> : <Redirect to={`/houses/${house.id}`} />
+
+        </Route> */}
       </Switch>
     </Router>
   );
 }
 
 export default App;
+
+
+
+
+
+
+///////// changing houses container to HPX

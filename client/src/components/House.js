@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import HousesListItem from "./HousesListItem";
 
 function House({ house }) {
 
@@ -12,7 +13,9 @@ function House({ house }) {
           <div className="card__detail">
             <p className="house-address">{house.address}</p>
             <p className="house-pet">Pet: {house.pet}</p>
+
             <NavLink exact to={`/houses/${house.id}`}><button >View!</button></NavLink>
+
           </div>
         </div>
       </div>
@@ -20,3 +23,6 @@ function House({ house }) {
   );
 }
 export default House;
+
+
+  {/* <NavLink exact to="/HousesListItem"><button >View!</button></NavLink> */}
